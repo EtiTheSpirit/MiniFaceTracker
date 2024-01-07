@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FaceTrackerDriver.FaceTracker.Data {
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe struct PredictionData {
+	public struct PredictionData {
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)MouthShape.NUMBER_OF_SHAPES)]
 		public float[] blendshapeWeights;
 	}

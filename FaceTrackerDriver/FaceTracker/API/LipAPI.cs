@@ -32,6 +32,11 @@ namespace FaceTrackerDriver.FaceTracker.API {
 		/// </summary>
 		private LipData _lipData;
 
+		/// <summary>
+		/// Whether or not this object has been disposed of.
+		/// </summary>
+		private bool _disposed;
+
 		public LipAPI() {
 			_lipData.image = Marshal.AllocCoTaskMem(IMAGE_WIDTH * IMAGE_HEIGHT * IMAGE_CHANNELS);
 		}
@@ -44,28 +49,35 @@ namespace FaceTrackerDriver.FaceTracker.API {
 		/// <returns></returns>
 		/// <exception cref="ArgumentOutOfRangeException">If the shape is undefined.</exception>
 		public float GetShapeIntensity(MouthShape shape) {
+			if (_disposed) throw new ObjectDisposedException(nameof(LipAPI));
+
 			if (shape <= MouthShape.Invalid && shape > MouthShape.NUMBER_OF_SHAPES) throw new ArgumentOutOfRangeException(nameof(shape));
 			shape--; // Correct for the +1 offset.
 
-			unsafe {
-				if (TryUpdateData()) {
-					return _lipData.predictionData.blendshapeWeights[(int)shape];
-				} else {
-					return 0;
-				}
+			if (TryUpdateData()) {
+				return _lipData.predictionData.blendshapeWeights[(int)shape];
+			} else {
+				return 0;
 			}
 		}
 
 		/// <summary>
-		/// Attempts to update the stored data, returning true if the data is OK, false if not.
+		/// Attempts to update the stored data by acquiring it from sr_runtime, 
+		/// returning true if the data was correctly received, false if not.
 		/// </summary>
 		/// <returns></returns>
 		private bool TryUpdateData() {
+			if (_disposed) throw new ObjectDisposedException(nameof(LipAPI));
+
 			return SRAnipalAPI.GetLipData(ref _lipData) == ApiStatus.SUCCESS;
 		}
 
 		public void Dispose() {
+			if (_disposed) return;
+
+			_disposed = true;
 			Marshal.FreeCoTaskMem(_lipData.image);
+			_lipData.image = IntPtr.Zero;
 		}
 	}
 }

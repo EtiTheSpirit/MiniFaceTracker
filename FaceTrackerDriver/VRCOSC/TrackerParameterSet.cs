@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FaceTrackerDriver.VRCOSC {
-	using ParameterPair = System.ValueTuple<string, OSCVRC.DataUtils.Variant<int, float, bool>>;
+	using ParameterPair = ValueTuple<string, Variant<int, float, bool>>;
 
 	public static class TrackerParameterSet {
 
