@@ -1,0 +1,480 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="OSCVRC_NETFRAMEWORK">
+      <HintPath>..\..\OSCVRC\OSCVRC_NETFRAMEWORK\bin\Release\OSCVRC_NETFRAMEWORK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="lib\libHTC_License.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\nanomsg.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipal.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\CrashRpt1403.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\crashrpt_lang.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\face.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\LCameraModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\LICENSE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\LipPredictionTVM.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\LPredictionModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\LVBSPredictionModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\model\LPrediction\lip_opencl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\model\LPrediction\lip_opencl.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\model\LPrediction\lip_opencl.params">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\nanomsg.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\NOTICE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\OpenCL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\opencv_core310.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\opencv_imgproc310.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\opencv_world310.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\platforms\qwindows.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\Qt5Core.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\Qt5Gui.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\Qt5Widgets.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\SRWorks_Log.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\sr_runtime.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\app.info">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\boot.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\globalgamemanagers">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\globalgamemanagers.assets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\level0">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\level0.resS">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\Assembly-CSharp-firstpass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\Assembly-CSharp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\Mono.Posix.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\Mono.Security.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\mscorlib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\Purchasing.Common.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\System.Configuration.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\System.Core.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\System.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\System.Security.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\System.Xml.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\Unity.Analytics.DataPrivacy.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\Unity.TextMeshPro.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\Unity.Timeline.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.AccessibilityModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Advertisements.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.AIModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.AndroidJNIModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.AnimationModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.ARModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.AssetBundleModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.AudioModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.ClothModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.ClusterInputModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.ClusterRendererModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.CoreModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.CrashReportingModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.DirectorModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.DSPGraphModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.GameCenterModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.GridModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.HotReloadModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.ImageConversionModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.IMGUIModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.InputLegacyModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.InputModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.JSONSerializeModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.LocalizationModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Monetization.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.ParticleSystemModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.PerformanceReportingModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Physics2DModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.PhysicsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.ProfilerModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.AppleCore.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.AppleMacosStub.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.AppleStub.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.Codeless.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.SecurityCore.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.SecurityStub.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.Stores.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.WinRTCore.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.Purchasing.WinRTStub.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.ScreenCaptureModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.SharedInternalsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.SpriteMaskModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.SpriteShapeModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.StreamingModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.SubstanceModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.SubsystemsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.TerrainModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.TerrainPhysicsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.TextCoreModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.TextRenderingModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.TilemapModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.TLSModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UI.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UIElementsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UIModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UmbraModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UNETModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UnityAnalyticsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UnityConnectModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UnityTestProtocolModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UnityWebRequestModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.VehiclesModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.VFXModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.VideoModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.VRModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.WindModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Managed\UnityEngine.XRModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Plugins\openvr_api.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\resources.assets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Resources\unity default resources">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\Resources\unity_builtin_extra">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\sharedassets0.assets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\LipSyncNotification_Data\sharedassets0.assets.resS">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\EmbedRuntime\MonoPosixHelper.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\2.0\Browsers\Compat.browser">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\2.0\machine.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\2.0\settings.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\2.0\web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.0\Browsers\Compat.browser">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.0\machine.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.0\settings.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.0\web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.5\Browsers\Compat.browser">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.5\machine.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.5\settings.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\4.5\web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\browscap.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\MonoBleedingEdge\etc\mono\mconfig\config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tools\lip_sync_notification\UnityPlayer.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\tvm_runtime.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\USBDevConnectDLL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\ViveSR_API.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRanipalSystem\ViveSR_Runtime.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\SRWorks_Log.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\ViveSR_Client.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
