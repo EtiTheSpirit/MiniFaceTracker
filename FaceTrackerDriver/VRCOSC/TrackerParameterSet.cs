@@ -24,7 +24,7 @@ namespace FaceTrackerDriver.VRCOSC {
 			_lipParams = new ParameterPair[(int)MouthShape.NUMBER_OF_SHAPES];
 			for (int index = 0; index < _lipParams.Length; index++) {
 				MouthShape shape = (MouthShape)(index + 1);
-				_lipParams[index] = new ParameterPair($"{PARAM_BASE_PATH}{shape}", 0f);
+				_lipParams[index] = new ParameterPair($"{PARAM_BASE_PATH}{Enum.GetName(shape)}", 0f);
 			}
 		}
 
@@ -53,7 +53,10 @@ namespace FaceTrackerDriver.VRCOSC {
 		public static void SendAllFaceShapes(this VRCAvatarParameterOSCInterface itf, FaceTrackerAPI api) {
 			for (MouthShape shape = 0; shape < MouthShape.NUMBER_OF_SHAPES - 1; /**/) {
 				shape++; // Add early here so that the value is offset by +1.
-				_lipParams[(int)shape].Item2 = api.GetBlendshape(shape, true);
+				//string name = _lipParams[(int)shape].Item1;
+				float value = api.GetBlendshape(shape, true);
+				_lipParams[(int)shape].Item2 = value;
+				//itf.SetAvatarParameter(name, value);
 			}
 			itf.SetManyParameters(_lipParams);
 		}

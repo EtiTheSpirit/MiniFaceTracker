@@ -2,6 +2,8 @@
 using FaceTrackerDriver.FaceTracker.Data;
 using FaceTrackerDriver.VRCOSC;
 using OSCVRC;
+using OSCVRC.DataUtils;
+using System;
 using System.Diagnostics;
 using System.Security.Principal;
 
@@ -25,22 +27,24 @@ namespace FaceTrackerDriver {
 						Console.WriteLine(":: -h, -?, -help, etc.");
 						Console.WriteLine("::     > Display this file.");
 						Console.WriteLine("::");
-						Console.WriteLine(":: -localUpdateSpeed <milliseconds>");
+						Console.WriteLine(":: -localUpdateSpeed <milliseconds> (default: 50)");
 						Console.WriteLine("::     > The parameters relevant to the system will be sent over OSC");
 						Console.WriteLine("::       once every <milliseconds>ms. Note that VRChat will only update other");
 						Console.WriteLine("::       players' screens 10 times per second (100ms) so anything faster will");
 						Console.WriteLine("::       only display locally. This is good for things like video recording but");
 						Console.WriteLine("::       may not always display properly to other players.");
-						Console.WriteLine("::     > The default value is 50.");
+						Console.WriteLine("::     > Consider using OSCmooth, which is a tool that adds parameter smoothing");
+						Console.WriteLine("::       to your avatar for remote clients. It works extremely well, on the count");
+						Console.WriteLine("::       of the fact that it was made for this very purpose.");
 						return 0;
 					} else if (arg == "localupdatespeed") {
 						if (args.Length > 1) {
 							string speedStr = args[1];
-							if (uint.TryParse(speedStr, out var speed) && speed > 0 && speed < int.MaxValue) {
+							if (uint.TryParse(speedStr, out var speed) && speed >= 0 && speed < int.MaxValue) {
 								millisDelay = unchecked((int)speed);
 								Console.WriteLine($"All lip tracking parameters will be sent once every {millisDelay} milliseconds.");
 							} else {
-								Console.WriteLine($"Failed to parse speed value. It should be a whole number greater than 0 and less than {int.MaxValue}.");
+								Console.WriteLine($"Failed to parse speed value. It should be a whole number greater than or equal to 0 and less than {int.MaxValue}.");
 							}
 						} else {
 							Console.WriteLine("Missing value for parameter -localUpdateSpeed. Please execute this app with -h for more info.");
@@ -68,12 +72,14 @@ namespace FaceTrackerDriver {
 					Console.WriteLine("Press any key to quit . . .");
 					Console.ForegroundColor = ConsoleColor.White;
 					Console.ReadKey(true);
-					return -1;
+
+					/* The requested operation requires elevation. */
+					return 0x000002E4; 
 				}
 				Process.Start(@".\lib\SRanipalSystem\sr_runtime.exe");
 				Thread.Sleep(1000); // Give it some time to start up.
 			}
-			Console.WriteLine("Initializing face tracker (this might take a moment, please be patient)...");
+			Console.WriteLine("Initializing face tracker (this will probably take a bit, please be patient)...");
 
 			if (!faceTracker.Initialize(out ApiStatus apiStatus)) {
 				Console.ForegroundColor = ConsoleColor.Red;
@@ -96,13 +102,20 @@ namespace FaceTrackerDriver {
 				return (int)apiStatus;
 			}
 
-			Console.WriteLine("Face Tracker initialized successfully.");
-			while (true) {
-				float jawOpenness = faceTracker.GetJawFlapOpenFactor(1.1f, 0.2f);
-				osc.SetAvatarParameter("Face/MouthShape/Custom/JawOpen", jawOpenness);
-				osc.SendAllFaceShapes(faceTracker);
-
-				Thread.Sleep(millisDelay);
+			Console.WriteLine("Face Tracker initialized successfully. Parameters are now being sent.");
+			if (millisDelay > 0) {
+				while (true) {
+					float jawOpenness = faceTracker.GetJawFlapOpenFactor(1.1f, 0.2f);
+					osc.SetAvatarParameter("Face/MouthShape/Custom/JawOpen", jawOpenness);
+					osc.SendAllFaceShapes(faceTracker);
+					Thread.Sleep(millisDelay);
+				}
+			} else {
+				while (true) {
+					float jawOpenness = faceTracker.GetJawFlapOpenFactor(1.1f, 0.2f);
+					osc.SetAvatarParameter("Face/MouthShape/Custom/JawOpen", jawOpenness);
+					osc.SendAllFaceShapes(faceTracker);
+				}
 			}
 		}
 

@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <Reference Include="OSCVRC_NETFRAMEWORK">
-      <HintPath>..\..\OSCVRC\OSCVRC_NETFRAMEWORK\bin\Release\OSCVRC_NETFRAMEWORK.dll</HintPath>
+      <HintPath>..\..\OSCVRC\OSCVRC_NETFRAMEWORK\bin\Debug\OSCVRC_NETFRAMEWORK.dll</HintPath>
     </Reference>
   </ItemGroup>
 
